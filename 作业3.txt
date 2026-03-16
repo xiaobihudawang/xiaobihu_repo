@@ -1,0 +1,15 @@
+1. Negligible vs Noticeable
+Statement: If f is not negligible, then it is noticeable.
+Answer: False.
+Counterexample: Define f:N→R≥0 as f(n)=1/n if n is even, and f(n)=1/2ⁿ if n is odd. f is not negligible because for p(n)=n, f(n)=1/n is not less than 1/p(n) for infinitely many even n. f is not noticeable because for any positive polynomial p(n), we can choose N large enough such that 2ⁿ > p(n) for all n>N. For odd n>N, f(n)=1/2ⁿ < 1/p(n), so f(n) is not at least 1/p(n) for all large n.
+
+2. (a) G'(S):=G(0∥S)
+Answer: Yes, G' is a PRG.
+Proof sketch: The input length of G' is n and output length is 3n, so expansion holds. If there exists a distinguisher D that can tell G'(S) apart from uniform, we can construct D' such that D'(T)=D(T) to distinguish G(0∥S) from uniform. Since 0∥S is a valid seed for G, G' inherits pseudorandomness from G.
+
+3. (b) G'(S):=S∥G(S)
+Answer: No, G' is not a PRG.
+Explanation: G' outputs S∥G(S), which exposes the seed S in the first n bits. A distinguisher D can check whether the first n bits of input X generate the last 3n bits via G. This holds for G'(S) but almost never for uniform strings, so D can distinguish them with advantage close to 1, which breaks pseudorandomness.
+
+4. Final Summary
+The statement is false. (a) G' is a PRG. (b) G' is not a PRG.
